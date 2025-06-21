@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opus CRM - Smarter Work. Seamless Automation.</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#1e3a8a',secondary:'#f97316'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+input:focus, button:focus {
+outline: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+</style>
+</head>
+<body class="bg-white" onload="AOS.init({duration: 1000, once: true})">
+<!-- Header & Navigation -->
+<header class="bg-primary text-white">
+<div class="container mx-auto px-4 py-2 text-xs flex justify-between items-center">
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-phone-line text-xs"></i>
+</div>
+<span>+1 (800) 123-4567</span>
+</div>
+<div class="flex space-x-4">
+<a href="#" class="hover:underline">Support</a>
+<a href="#" class="hover:underline">Contact Sales</a>
+<a href="#" class="hover:underline">Documentation</a>
+</div>
+</div>
+</header>
+<nav class="py-4 px-4 md:px-8 border-b shadow-sm bg-white">
+<div class="container mx-auto flex justify-between items-center">
+<div class="flex items-center">
+<a href="#" class="font-['Pacifico'] text-2xl text-primary mr-10">logo</a>
+<div class="hidden md:flex space-x-8">
+<a href="#" class="text-gray-700 hover:text-primary font-medium">Home</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium">Features</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium">Pricing</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium">Resources</a>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<a href="#" class="text-gray-700 hover:text-primary font-medium">Log in</a>
+<button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap">Sign Up</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative">
+<div class="relative h-[500px] overflow-hidden">
+<video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+<source src="https://public.readdy.ai/ai/video_res/9de87693-20e7-4ed8-b6c5-d4986a6c3b62.mp4" type="video/mp4">
+</video>
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+<div class="container mx-auto px-4 md:px-8 h-full flex items-center relative z-10">
+<div class="max-w-xl" data-aos="fade-right">
+<h1 class="text-4xl md:text-5xl font-bold mb-4">
+Smarter Work.<br>
+Seamless Automation.<br>
+<span class="text-secondary">Real Growth.</span>
+</h1>
+<p class="text-gray-700 mb-8 text-lg">
+Opus CRM streamlines your business operations with AI-powered automation, helping you save time, reduce costs, and focus on what matters most—growing your business.
+</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-white px-6 py-3 font-medium !rounded-button whitespace-nowrap">Get Started</button>
+<button class="border border-gray-300 text-gray-700 px-6 py-3 font-medium !rounded-button whitespace-nowrap">Book a Demo</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const pricingCards = document.querySelectorAll('.pricing-card');
+pricingCards.forEach(card => {
+card.addEventListener('click', function() {
+pricingCards.forEach(c => {
+if (c.classList.contains('bg-primary')) {
+c.classList.remove('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+c.classList.add('bg-white', 'border', 'border-gray-200', 'shadow-sm');
+const button = c.querySelector('button');
+if (button) {
+button.classList.remove('bg-white', 'text-primary');
+button.classList.add('border', 'border-gray-300', 'text-gray-700');
+}
+const checkIcons = c.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-white');
+icon.parentElement.classList.add('text-primary');
+});
+const texts = c.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-white')) {
+text.classList.remove('text-white');
+}
+if (text.classList.contains('text-white/90')) {
+text.classList.remove('text-white/90');
+text.classList.add('text-gray-600');
+}
+});
+}
+});
+if (!this.classList.contains('bg-primary')) {
+this.classList.remove('bg-white', 'border-gray-200', 'shadow-sm');
+this.classList.add('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+const button = this.querySelector('button');
+if (button) {
+button.classList.remove('border', 'border-gray-300', 'text-gray-700');
+button.classList.add('bg-white', 'text-primary');
+}
+const checkIcons = this.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-primary');
+icon.parentElement.classList.add('text-white');
+});
+const texts = this.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-gray-600')) {
+text.classList.remove('text-gray-600');
+text.classList.add('text-white/90');
+}
+if (!text.classList.contains('text-white') && !text.classList.contains('text-white/90')) {
+text.classList.add('text-white');
+}
+});
+}
+const selectedPlan = this.getAttribute('data-plan');
+console.log('Selected plan:', selectedPlan);
+});
+});
+});
+</script>
+<!-- Trusted By Section -->
+<section class="py-10 bg-gray-50">
+<div class="container mx-auto px-4 md:px-8">
+<p class="text-center text-gray-500 mb-8">Trusted by 5,000+ businesses worldwide</p>
+<div class="overflow-hidden">
+<div class="flex animate-scroll">
+<div class="flex items-center gap-16 px-8">
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-microsoft-fill text-xl"></i>
+</div>
+<span class="font-medium">Microsoft</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-amazon-fill text-xl"></i>
+</div>
+<span class="font-medium">Amazon</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-google-fill text-xl"></i>
+</div>
+<span class="font-medium">Google</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-netflix-fill text-xl"></i>
+</div>
+<span class="font-medium">Netflix</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-spotify-fill text-xl"></i>
+</div>
+<span class="font-medium">Spotify</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-apple-fill text-xl"></i>
+</div>
+<span class="font-medium">Apple</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-facebook-fill text-xl"></i>
+</div>
+<span class="font-medium">Facebook</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-twitter-fill text-xl"></i>
+</div>
+<span class="font-medium">Twitter</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-linkedin-fill text-xl"></i>
+</div>
+<span class="font-medium">LinkedIn</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-adobe-fill text-xl"></i>
+</div>
+<span class="font-medium">Adobe</span>
+</div>
+</div>
+<div class="flex items-center gap-16 px-8" aria-hidden="true">
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-microsoft-fill text-xl"></i>
+</div>
+<span class="font-medium">Microsoft</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-amazon-fill text-xl"></i>
+</div>
+<span class="font-medium">Amazon</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-google-fill text-xl"></i>
+</div>
+<span class="font-medium">Google</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-netflix-fill text-xl"></i>
+</div>
+<span class="font-medium">Netflix</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-spotify-fill text-xl"></i>
+</div>
+<span class="font-medium">Spotify</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-apple-fill text-xl"></i>
+</div>
+<span class="font-medium">Apple</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-facebook-fill text-xl"></i>
+</div>
+<span class="font-medium">Facebook</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-twitter-fill text-xl"></i>
+</div>
+<span class="font-medium">Twitter</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-linkedin-fill text-xl"></i>
+</div>
+<span class="font-medium">LinkedIn</span>
+</div>
+<div class="w-32 h-12 flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-adobe-fill text-xl"></i>
+</div>
+<span class="font-medium">Adobe</span>
+</div>
+</div>
+</div>
+</div>
+<style>
+@keyframes scroll {
+0% {
+transform: translateX(0);
+}
+100% {
+transform: translateX(-50%);
+}
+}
+.animate-scroll {
+animation: scroll 30s linear infinite;
+}
+</style>
+</div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const pricingCards = document.querySelectorAll('.pricing-card');
+pricingCards.forEach(card => {
+card.addEventListener('click', function() {
+pricingCards.forEach(c => {
+if (c.classList.contains('bg-primary')) {
+c.classList.remove('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+c.classList.add('bg-white', 'border', 'border-gray-200', 'shadow-sm');
+const button = c.querySelector('button');
+if (button) {
+button.classList.remove('bg-white', 'text-primary');
+button.classList.add('border', 'border-gray-300', 'text-gray-700');
+}
+const checkIcons = c.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-white');
+icon.parentElement.classList.add('text-primary');
+});
+const texts = c.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-white')) {
+text.classList.remove('text-white');
+}
+if (text.classList.contains('text-white/90')) {
+text.classList.remove('text-white/90');
+text.classList.add('text-gray-600');
+}
+});
+}
+});
+if (!this.classList.contains('bg-primary')) {
+this.classList.remove('bg-white', 'border-gray-200', 'shadow-sm');
+this.classList.add('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+const button = this.querySelector('button');
+if (button) {
+button.classList.remove('border', 'border-gray-300', 'text-gray-700');
+button.classList.add('bg-white', 'text-primary');
+}
+const checkIcons = this.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-primary');
+icon.parentElement.classList.add('text-white');
+});
+const texts = this.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-gray-600')) {
+text.classList.remove('text-gray-600');
+text.classList.add('text-white/90');
+}
+if (!text.classList.contains('text-white') && !text.classList.contains('text-white/90')) {
+text.classList.add('text-white');
+}
+});
+}
+const selectedPlan = this.getAttribute('data-plan');
+console.log('Selected plan:', selectedPlan);
+});
+});
+});
+</script>
+<!-- Features Section -->
+<section class="py-16">
+<div class="container mx-auto px-4 md:px-8">
+<h2 class="text-3xl font-bold text-center mb-12">Smarter Workflow, Greater Impact</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-aos="fade-up" data-aos-delay="100">
+<div class="p-6 bg-white rounded shadow-sm border border-gray-100 hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="150">
+<div class="w-16 h-16 flex items-center justify-center mb-4">
+<i class="ri-brain-fill text-4xl text-secondary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">AI-Driven Insights</h3>
+<p class="text-gray-600">Get actionable intelligence from your customer data to make smarter business decisions.</p>
+</div>
+<div class="p-6 bg-white rounded shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center mb-4">
+<i class="ri-settings-3-fill text-4xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Custom Workflows</h3>
+<p class="text-gray-600">Create automated workflows tailored to your specific business processes and needs.</p>
+</div>
+<div class="p-6 bg-white rounded shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center mb-4">
+<i class="ri-bar-chart-box-fill text-4xl text-secondary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Sales Performance</h3>
+<p class="text-gray-600">Track and optimize your sales pipeline with real-time analytics and reporting.</p>
+</div>
+<div class="p-6 bg-white rounded shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+<div class="w-16 h-16 flex items-center justify-center mb-4">
+<i class="ri-message-3-fill text-4xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Personalized Support</h3>
+<p class="text-gray-600">Deliver exceptional customer experiences with personalized communication tools.</p>
+</div>
+</div>
+</div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const pricingCards = document.querySelectorAll('.pricing-card');
+pricingCards.forEach(card => {
+card.addEventListener('click', function() {
+pricingCards.forEach(c => {
+if (c.classList.contains('bg-primary')) {
+c.classList.remove('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+c.classList.add('bg-white', 'border', 'border-gray-200', 'shadow-sm');
+const button = c.querySelector('button');
+if (button) {
+button.classList.remove('bg-white', 'text-primary');
+button.classList.add('border', 'border-gray-300', 'text-gray-700');
+}
+const checkIcons = c.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-white');
+icon.parentElement.classList.add('text-primary');
+});
+const texts = c.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-white')) {
+text.classList.remove('text-white');
+}
+if (text.classList.contains('text-white/90')) {
+text.classList.remove('text-white/90');
+text.classList.add('text-gray-600');
+}
+});
+}
+});
+if (!this.classList.contains('bg-primary')) {
+this.classList.remove('bg-white', 'border-gray-200', 'shadow-sm');
+this.classList.add('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+const button = this.querySelector('button');
+if (button) {
+button.classList.remove('border', 'border-gray-300', 'text-gray-700');
+button.classList.add('bg-white', 'text-primary');
+}
+const checkIcons = this.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-primary');
+icon.parentElement.classList.add('text-white');
+});
+const texts = this.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-gray-600')) {
+text.classList.remove('text-gray-600');
+text.classList.add('text-white/90');
+}
+if (!text.classList.contains('text-white') && !text.classList.contains('text-white/90')) {
+text.classList.add('text-white');
+}
+});
+}
+const selectedPlan = this.getAttribute('data-plan');
+console.log('Selected plan:', selectedPlan);
+});
+});
+});
+</script>
+<!-- Customer Benefits Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4 md:px-8">
+<div class="flex flex-col md:flex-row items-center gap-12">
+<div class="md:w-1/2" data-aos="fade-right">
+<h2 class="text-3xl font-bold mb-6">Designed to Fit Your Customers' Needs</h2>
+<p class="text-gray-600 mb-8">Our flexible platform adapts to your business requirements, not the other way around. Scale with confidence as your business grows.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Customizable workflows</span>
+</div>
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Intuitive user interface</span>
+</div>
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Multi-channel support</span>
+</div>
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span>Advanced reporting</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-8 mb-4">
+<div>
+<p class="text-3xl font-bold text-primary">140+</p>
+<p class="text-gray-600">Ready-made templates</p>
+</div>
+<div>
+<p class="text-3xl font-bold text-primary">24K+</p>
+<p class="text-gray-600">Active businesses</p>
+</div>
+<div>
+<p class="text-3xl font-bold text-primary">8+</p>
+<p class="text-gray-600">Years of excellence</p>
+</div>
+</div>
+</div>
+<div class="md:w-1/2" data-aos="fade-left">
+<img src="https://readdy.ai/api/search-image?query=business%20professionals%20in%20modern%20office%20discussing%20data%20on%20laptop%20screen%2C%20focused%20on%20work%2C%20professional%20environment%2C%20business%20attire%2C%20clean%20workspace%2C%20high%20quality%20professional%20photo&width=600&height=400&seq=456&orientation=landscape" alt="Customer-focused CRM solution" class="rounded-lg shadow-lg object-cover w-full h-auto">
+</div>
+</div>
+</div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const pricingCards = document.querySelectorAll('.pricing-card');
+pricingCards.forEach(card => {
+card.addEventListener('click', function() {
+pricingCards.forEach(c => {
+if (c.classList.contains('bg-primary')) {
+c.classList.remove('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+c.classList.add('bg-white', 'border', 'border-gray-200', 'shadow-sm');
+const button = c.querySelector('button');
+if (button) {
+button.classList.remove('bg-white', 'text-primary');
+button.classList.add('border', 'border-gray-300', 'text-gray-700');
+}
+const checkIcons = c.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-white');
+icon.parentElement.classList.add('text-primary');
+});
+const texts = c.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-white')) {
+text.classList.remove('text-white');
+}
+if (text.classList.contains('text-white/90')) {
+text.classList.remove('text-white/90');
+text.classList.add('text-gray-600');
+}
+});
+}
+});
+if (!this.classList.contains('bg-primary')) {
+this.classList.remove('bg-white', 'border-gray-200', 'shadow-sm');
+this.classList.add('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+const button = this.querySelector('button');
+if (button) {
+button.classList.remove('border', 'border-gray-300', 'text-gray-700');
+button.classList.add('bg-white', 'text-primary');
+}
+const checkIcons = this.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-primary');
+icon.parentElement.classList.add('text-white');
+});
+const texts = this.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-gray-600')) {
+text.classList.remove('text-gray-600');
+text.classList.add('text-white/90');
+}
+if (!text.classList.contains('text-white') && !text.classList.contains('text-white/90')) {
+text.classList.add('text-white');
+}
+});
+}
+const selectedPlan = this.getAttribute('data-plan');
+console.log('Selected plan:', selectedPlan);
+});
+});
+});
+</script>
+<!-- Integrations Section -->
+<section class="py-16">
+<div class="container mx-auto px-4 md:px-8">
+<h2 class="text-3xl font-bold text-center mb-16">Seamless Integrations with<br>Your Favorite Tools</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-[#FFF8F6] rounded-2xl p-8" data-aos="fade-right">
+<h3 class="text-xl font-semibold mb-8">Systems We Work With</h3>
+<div class="grid grid-cols-4 gap-4 mb-6">
+<div class="bg-white w-16 h-16 rounded flex items-center justify-center">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-slack-fill text-3xl text-[#E01E5A]"></i>
+</div>
+</div>
+<div class="bg-white w-16 h-16 rounded flex items-center justify-center">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-dropbox-fill text-3xl text-[#0061FF]"></i>
+</div>
+</div>
+<div class="bg-white w-16 h-16 rounded flex items-center justify-center">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-github-fill text-3xl text-[#24292F]"></i>
+</div>
+</div>
+<div class="bg-white w-16 h-16 rounded flex items-center justify-center">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-notion-fill text-3xl text-[#000000]"></i>
+</div>
+</div>
+<div class="bg-white w-16 h-16 rounded flex items-center justify-center">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-trello-fill text-3xl text-[#0052CC]"></i>
+</div>
+</div>
+<div class="bg-white w-16 h-16 rounded flex items-center justify-center">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-asana-fill text-3xl text-[#F06A6A]"></i>
+</div>
+</div>
+<div class="bg-white w-16 h-16 rounded flex items-center justify-center">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-google-fill text-3xl text-[#4285F4]"></i>
+</div>
+</div>
+<div class="bg-white w-16 h-16 rounded flex items-center justify-center">
+<div class="w-10 h-10 flex items-center justify-center">
+<i class="ri-microsoft-fill text-3xl text-[#00A4EF]"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-600">Connect Opsis CRM with the apps and services you use daily to simplify your workflow and enhance productivity.</p>
+</div>
+<div class="bg-[#FFF8F6] rounded-2xl p-8" data-aos="fade-left">
+<h3 class="text-xl font-semibold mb-8">Maximize Your CRM Efficiency</h3>
+<div class="space-y-4">
+<div class="bg-white rounded-lg px-4 py-3 inline-flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-flashlight-line text-primary"></i>
+</div>
+<span>Instant Setup</span>
+</div>
+<div class="bg-white rounded-lg px-4 py-3 inline-flex items-center ml-8">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-settings-3-line text-primary"></i>
+</div>
+<span>Automate Daily Tasks</span>
+</div>
+<div class="bg-white rounded-lg px-4 py-3 inline-flex items-center ml-16">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-money-dollar-circle-line text-primary"></i>
+</div>
+<span>Reduce Expenses</span>
+</div>
+</div>
+<p class="text-gray-600 mt-8">Packed with simple features and smooth connections.</p>
+</div>
+</div>
+</div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const pricingCards = document.querySelectorAll('.pricing-card');
+pricingCards.forEach(card => {
+card.addEventListener('click', function() {
+pricingCards.forEach(c => {
+if (c.classList.contains('bg-primary')) {
+c.classList.remove('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+c.classList.add('bg-white', 'border', 'border-gray-200', 'shadow-sm');
+const button = c.querySelector('button');
+if (button) {
+button.classList.remove('bg-white', 'text-primary');
+button.classList.add('border', 'border-gray-300', 'text-gray-700');
+}
+const checkIcons = c.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-white');
+icon.parentElement.classList.add('text-primary');
+});
+const texts = c.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-white')) {
+text.classList.remove('text-white');
+}
+if (text.classList.contains('text-white/90')) {
+text.classList.remove('text-white/90');
+text.classList.add('text-gray-600');
+}
+});
+}
+});
+if (!this.classList.contains('bg-primary')) {
+this.classList.remove('bg-white', 'border-gray-200', 'shadow-sm');
+this.classList.add('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+const button = this.querySelector('button');
+if (button) {
+button.classList.remove('border', 'border-gray-300', 'text-gray-700');
+button.classList.add('bg-white', 'text-primary');
+}
+const checkIcons = this.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-primary');
+icon.parentElement.classList.add('text-white');
+});
+const texts = this.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-gray-600')) {
+text.classList.remove('text-gray-600');
+text.classList.add('text-white/90');
+}
+if (!text.classList.contains('text-white') && !text.classList.contains('text-white/90')) {
+text.classList.add('text-white');
+}
+});
+}
+const selectedPlan = this.getAttribute('data-plan');
+console.log('Selected plan:', selectedPlan);
+});
+});
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const pricingCards = document.querySelectorAll('.pricing-card');
+pricingCards.forEach(card => {
+card.addEventListener('click', function() {
+pricingCards.forEach(c => {
+if (c.classList.contains('bg-primary')) {
+c.classList.remove('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+c.classList.add('bg-white', 'border', 'border-gray-200', 'shadow-sm');
+const button = c.querySelector('button');
+if (button) {
+button.classList.remove('bg-white', 'text-primary');
+button.classList.add('border', 'border-gray-300', 'text-gray-700');
+}
+const checkIcons = c.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-white');
+icon.parentElement.classList.add('text-primary');
+});
+const texts = c.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-white')) {
+text.classList.remove('text-white');
+}
+if (text.classList.contains('text-white/90')) {
+text.classList.remove('text-white/90');
+text.classList.add('text-gray-600');
+}
+});
+}
+});
+if (!this.classList.contains('bg-primary')) {
+this.classList.remove('bg-white', 'border-gray-200', 'shadow-sm');
+this.classList.add('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+const button = this.querySelector('button');
+if (button) {
+button.classList.remove('border', 'border-gray-300', 'text-gray-700');
+button.classList.add('bg-white', 'text-primary');
+}
+const checkIcons = this.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-primary');
+icon.parentElement.classList.add('text-white');
+});
+const texts = this.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-gray-600')) {
+text.classList.remove('text-gray-600');
+text.classList.add('text-white/90');
+}
+if (!text.classList.contains('text-white') && !text.classList.contains('text-white/90')) {
+text.classList.add('text-white');
+}
+});
+}
+const selectedPlan = this.getAttribute('data-plan');
+console.log('Selected plan:', selectedPlan);
+});
+});
+});
+</script>
+<!-- Testimonial Section -->
+<section class="py-16">
+<div class="container mx-auto px-4 md:px-8">
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+<div class="flex flex-col md:flex-row gap-8 items-center" data-aos="fade-up">
+<div class="md:w-3/4" data-aos="fade-right">
+<div class="w-10 h-10 flex items-center justify-center text-4xl text-secondary mb-4">
+<i class="ri-double-quotes-l"></i>
+</div>
+<p class="text-xl text-gray-700 mb-6">
+"Opus CRM has completely changed the way our business operates. The automation features have saved us countless hours, and the insights we've gained have helped us increase our revenue by 37% in just six months. The customer support team is also exceptional."
+</p>
+<div>
+<p class="font-semibold">Elizabeth Chen</p>
+<p class="text-gray-600">Director of Operations, TechVision Inc.</p>
+</div>
+</div>
+<div class="md:w-1/4">
+<img src="https://readdy.ai/api/search-image?query=professional%20business%20woman%20in%20office%20setting%2C%20confident%20pose%2C%20business%20attire%2C%20neutral%20background%2C%20professional%20headshot%20style%2C%20high%20quality%20professional%20photo&width=300&height=300&seq=789&orientation=squarish" alt="Elizabeth Chen" class="rounded-lg shadow object-cover w-full h-auto">
+</div>
+</div>
+</div>
+</div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const pricingCards = document.querySelectorAll('.pricing-card');
+pricingCards.forEach(card => {
+card.addEventListener('click', function() {
+pricingCards.forEach(c => {
+if (c.classList.contains('bg-primary')) {
+c.classList.remove('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+c.classList.add('bg-white', 'border', 'border-gray-200', 'shadow-sm');
+const button = c.querySelector('button');
+if (button) {
+button.classList.remove('bg-white', 'text-primary');
+button.classList.add('border', 'border-gray-300', 'text-gray-700');
+}
+const checkIcons = c.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-white');
+icon.parentElement.classList.add('text-primary');
+});
+const texts = c.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-white')) {
+text.classList.remove('text-white');
+}
+if (text.classList.contains('text-white/90')) {
+text.classList.remove('text-white/90');
+text.classList.add('text-gray-600');
+}
+});
+}
+});
+if (!this.classList.contains('bg-primary')) {
+this.classList.remove('bg-white', 'border-gray-200', 'shadow-sm');
+this.classList.add('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+const button = this.querySelector('button');
+if (button) {
+button.classList.remove('border', 'border-gray-300', 'text-gray-700');
+button.classList.add('bg-white', 'text-primary');
+}
+const checkIcons = this.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-primary');
+icon.parentElement.classList.add('text-white');
+});
+const texts = this.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-gray-600')) {
+text.classList.remove('text-gray-600');
+text.classList.add('text-white/90');
+}
+if (!text.classList.contains('text-white') && !text.classList.contains('text-white/90')) {
+text.classList.add('text-white');
+}
+});
+}
+const selectedPlan = this.getAttribute('data-plan');
+console.log('Selected plan:', selectedPlan);
+});
+});
+});
+</script>
+<!-- CTA Section -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4 md:px-8">
+<div class="bg-primary rounded-lg shadow-lg overflow-hidden" data-aos="zoom-in">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-2/3 p-8 md:p-12">
+<h2 class="text-3xl font-bold text-white mb-4">Transform Your Business with Opus CRM</h2>
+<p class="text-blue-100 mb-6">Join thousands of successful businesses that have streamlined their operations, improved customer relationships, and accelerated growth with our powerful CRM solution.</p>
+<form action="" method="POST" class="space-y-4 max-w-md">
+<div class="flex flex-col sm:flex-row gap-4">
+<input type="text" name="name" placeholder="Your name" required class="w-full sm:w-1/2 px-4 py-2 !rounded-button border-none text-sm" maxlength="50">
+<input type="email" name="email" placeholder="Work email" required class="w-full sm:w-1/2 px-4 py-2 !rounded-button border-none text-sm" maxlength="50">
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<input type="text" name="company" placeholder="Company name" required class="w-full sm:w-1/2 px-4 py-2 !rounded-button border-none text-sm" maxlength="50">
+<select name="employees" required class="w-full sm:w-1/2 px-4 py-2 !rounded-button border-none text-sm bg-white text-gray-500 pr-8">
+<option value="">Company size</option>
+<option value="1-10">1-10 employees</option>
+<option value="11-50">11-50 employees</option>
+<option value="51-200">51-200 employees</option>
+<option value="201-500">201-500 employees</option>
+<option value="501+">501+ employees</option>
+</select>
+</div>
+<button type="submit" class="w-full bg-white text-primary px-6 py-2.5 font-medium !rounded-button whitespace-nowrap hover:bg-gray-50 transition-colors">Start Free Trial</button>
+</form>
+</div>
+<div class="md:w-1/3 bg-blue-900 flex items-center justify-center p-8">
+<img src="https://readdy.ai/api/search-image?query=modern%20business%20analytics%20dashboard%20on%20computer%20screen%2C%20professional%20business%20visualization%2C%20clean%20design%2C%20data%20charts%20and%20graphs%2C%20high%20quality%20professional%20image&width=400&height=300&seq=101&orientation=portrait" alt="Opus CRM Dashboard" class="rounded shadow-lg object-cover w-full h-auto">
+</div>
+</div>
+</div>
+</div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const pricingCards = document.querySelectorAll('.pricing-card');
+pricingCards.forEach(card => {
+card.addEventListener('click', function() {
+pricingCards.forEach(c => {
+if (c.classList.contains('bg-primary')) {
+c.classList.remove('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+c.classList.add('bg-white', 'border', 'border-gray-200', 'shadow-sm');
+const button = c.querySelector('button');
+if (button) {
+button.classList.remove('bg-white', 'text-primary');
+button.classList.add('border', 'border-gray-300', 'text-gray-700');
+}
+const checkIcons = c.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-white');
+icon.parentElement.classList.add('text-primary');
+});
+const texts = c.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-white')) {
+text.classList.remove('text-white');
+}
+if (text.classList.contains('text-white/90')) {
+text.classList.remove('text-white/90');
+text.classList.add('text-gray-600');
+}
+});
+}
+});
+if (!this.classList.contains('bg-primary')) {
+this.classList.remove('bg-white', 'border-gray-200', 'shadow-sm');
+this.classList.add('bg-primary', 'text-white', 'scale-105', 'shadow-md');
+const button = this.querySelector('button');
+if (button) {
+button.classList.remove('border', 'border-gray-300', 'text-gray-700');
+button.classList.add('bg-white', 'text-primary');
+}
+const checkIcons = this.querySelectorAll('.ri-check-line');
+checkIcons.forEach(icon => {
+icon.parentElement.classList.remove('text-primary');
+icon.parentElement.classList.add('text-white');
+});
+const texts = this.querySelectorAll('h3, p, span, li span');
+texts.forEach(text => {
+if (text.classList.contains('text-gray-600')) {
+text.classList.remove('text-gray-600');
+text.classList.add('text-white/90');
+}
+if (!text.classList.contains('text-white') && !text.classList.contains('text-white/90')) {
+text.classList.add('text-white');
+}
+});
+}
+const selectedPlan = this.getAttribute('data-plan');
+console.log('Selected plan:', selectedPlan);
+});
+});
+});
+</script>
+<!-- Footer -->
+<footer class="bg-gray-100 pt-16 pb-8">
+<div class="container mx-auto px-4 md:px-8">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+<div class="col-span-2 md:col-span-1">
+<a href="#" class="font-['Pacifico'] text-2xl text-primary mb-4 inline-block">logo</a>
+<p class="text-gray-600 mb-4">Empowering businesses with intelligent automation since 2017.</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-500 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-twitter-x-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-500 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-linkedin-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-500 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-facebook-line"></i>
+</div>
+</a>
+<a href="#" class="text-gray-500 hover:text-primary">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-instagram-line"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h3 class="font-semibold mb-4">Product</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-600 hover:text-primary">Features</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Pricing</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Integrations</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Updates</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-semibold mb-4">Resources</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-600 hover:text-primary">Blog</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Documentation</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Community</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Webinars</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-semibold mb-4">Company</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-600 hover:text-primary">About</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Careers</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Contact</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Partners</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-semibold mb-4">Support</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-600 hover:text-primary">Help Center</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Status</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Privacy Policy</a></li>
+<li><a href="#" class="text-gray-600 hover:text-primary">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-200">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-600 text-sm mb-4 md:mb-0">© 2025 Opus CRM. All rights reserved.</p>
+<div class="flex space-x-6">
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-visa-line text-gray-600"></i>
+</div>
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-mastercard-line text-gray-600"></i>
+</div>
+<div class="w-6 h-6 flex items-center justify-center mr-2">
+<i class="ri-paypal-line text-gray-600"></i>
+</div>
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-apple-fill text-gray-600"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
