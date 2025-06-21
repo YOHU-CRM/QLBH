@@ -1039,139 +1039,91 @@ console.log('Selected plan:', selectedPlan);
 </div>
 </div>
 </footer>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opus CRM - Smarter Work. Seamless Automation.</title>
-    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>tailwind.config={theme:{extend:{colors:{primary:'#1e3a8a',secondary:'#f97316'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-    <style>
-        :where([class^="ri-"])::before { content: "\f3c2"; }
-        body {
-            font-family: 'Inter', sans-serif;
+<script id="voice-recognition-script">
+    document.addEventListener('DOMContentLoaded', function() {
+        const nutMic = document.getElementById('nut-mic');
+        const demoMicButton = document.getElementById('demo-mic-button');
+        const demoResponse = document.getElementById('demo-response');
+        const demoTextInput = document.getElementById('demo-text-input');
+        const demoSendButton = document.getElementById('demo-send-button');
+
+        // Kiểm tra xem SpeechRecognition có hỗ trợ không
+        if ('webkitSpeechRecognition' in window) {
+            const nhanDang = new webkitSpeechRecognition();
+            nhanDang.lang = 'vi-VN';  // Ngôn ngữ nhận dạng là tiếng Việt
+            nhanDang.continuous = false;
+
+            nutMic.addEventListener('click', function() {
+                nutMic.classList.add('animate-pulse');
+                nhanDang.start();
+            });
+
+            demoMicButton.addEventListener('click', function() {
+                demoMicButton.classList.add('animate-pulse');
+                nhanDang.start();
+            });
+
+            nhanDang.onresult = function(sukien) {
+                const lenh = sukien.results[0][0].transcript;
+                xuLyLenhGiongNoi(lenh);
+            };
+
+            nhanDang.onend = function() {
+                nutMic.classList.remove('animate-pulse');
+                demoMicButton.classList.remove('animate-pulse');
+            };
+        } else {
+            nutMic.addEventListener('click', function() {
+                alert('Trình duyệt của bạn không hỗ trợ nhận dạng giọng nói. Vui lòng sử dụng Chrome hoặc Edge.');
+            });
+
+            demoMicButton.addEventListener('click', function() {
+                alert('Trình duyệt của bạn không hỗ trợ nhận dạng giọng nói. Vui lòng sử dụng Chrome hoặc Edge.');
+            });
         }
-        input:focus, button:focus {
-            outline: none;
-        }
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-    </style>
-</head>
-<body class="bg-white" onload="AOS.init({duration: 1000, once: true})">
-    <!-- Other content goes here -->
 
-    <!-- Mic Button -->
-    <button id="nut-mic" class="bg-blue-500 text-white px-4 py-2 rounded">Start Mic</button>
-    
-    <!-- Demo Mic Button -->
-    <button id="demo-mic-button" class="bg-green-500 text-white px-4 py-2 rounded">Demo Mic</button>
-
-    <!-- Text input for manual text input -->
-    <input type="text" id="demo-text-input" placeholder="Type here" class="border p-2 mt-4">
-
-    <!-- Button to send input manually -->
-    <button id="demo-send-button" class="bg-red-500 text-white px-4 py-2 rounded mt-2">Send Text</button>
-
-    <!-- Display the result of voice input -->
-    <div id="demo-response" class="mt-4"></div>
-
-    <!-- Voice Recognition Script -->
-    <script id="voice-recognition-script">
-        document.addEventListener('DOMContentLoaded', function() {
-            const nutMic = document.getElementById('nut-mic');
-            const demoMicButton = document.getElementById('demo-mic-button');
-            const demoResponse = document.getElementById('demo-response');
-            const demoTextInput = document.getElementById('demo-text-input');
-            const demoSendButton = document.getElementById('demo-send-button');
-
-            // Check if SpeechRecognition is supported
-            if ('webkitSpeechRecognition' in window) {
-                const nhanDang = new webkitSpeechRecognition();
-                nhanDang.lang = 'vi-VN';
-                nhanDang.continuous = false;
-
-                nutMic.addEventListener('click', function() {
-                    nutMic.classList.add('animate-pulse');
-                    nhanDang.start();
-                });
-
-                demoMicButton.addEventListener('click', function() {
-                    demoMicButton.classList.add('animate-pulse');
-                    nhanDang.start();
-                });
-
-                nhanDang.onresult = function(sukien) {
-                    const lenh = sukien.results[0][0].transcript;
-                    xuLyLenhGiongNoi(lenh);
-                };
-
-                nhanDang.onend = function() {
-                    nutMic.classList.remove('animate-pulse');
-                    demoMicButton.classList.remove('animate-pulse');
-                };
-            } else {
-                nutMic.addEventListener('click', function() {
-                    alert('Trình duyệt của bạn không hỗ trợ nhận dạng giọng nói. Vui lòng sử dụng Chrome hoặc Edge.');
-                });
-
-                demoMicButton.addEventListener('click', function() {
-                    alert('Trình duyệt của bạn không hỗ trợ nhận dạng giọng nói. Vui lòng sử dụng Chrome hoặc Edge.');
-                });
+        // Xử lý input từ người dùng
+        demoSendButton.addEventListener('click', function() {
+            const lenh = demoTextInput.value.trim();
+            if (lenh) {
+                xuLyLenhGiongNoi(lenh);
+                demoTextInput.value = '';
             }
+        });
 
-            // Handle text input manually
-            demoSendButton.addEventListener('click', function() {
+        demoTextInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
                 const lenh = demoTextInput.value.trim();
                 if (lenh) {
                     xuLyLenhGiongNoi(lenh);
                     demoTextInput.value = '';
                 }
-            });
-
-            demoTextInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    const lenh = demoTextInput.value.trim();
-                    if (lenh) {
-                        xuLyLenhGiongNoi(lenh);
-                        demoTextInput.value = '';
-                    }
-                }
-            });
-
-            // Process voice commands
-            function xuLyLenhGiongNoi(lenh) {
-                lenh = lenh.toLowerCase();
-
-                let response = '';
-
-                if (lenh.includes('doanh thu') && lenh.includes('hôm nay')) {
-                    response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Doanh thu hôm nay (17/06/2025) là 4.850.000đ, tăng 12% so với cùng kỳ tuần trước.</p>';
-                } else if (lenh.includes('tồn kho') && lenh.includes('hàng a')) {
-                    response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Hàng A hiện còn tồn kho 25 đơn vị, giá trị 12.500.000đ. Mức tồn kho an toàn là 20 đơn vị.</p>';
-                } else if (lenh.includes('báo cáo') && lenh.includes('tháng')) {
-                    response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Báo cáo tháng 6/2025 (đến ngày 17/06):<br>- Doanh thu: 78.500.000đ<br>- Chi phí: 45.200.000đ<br>- Lợi nhuận: 33.300.000đ<br>- Tỷ suất lợi nhuận: 42.4%</p>';
-                } else if (lenh.includes('lợi nhuận') && lenh.includes('quý')) {
-                    response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Lợi nhuận Quý 2/2025 (đến ngày 17/06) là 98.750.000đ, tăng 15% so với cùng kỳ năm trước.</p>';
-                } else {
-                    response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Xin lỗi, tôi không hiểu yêu cầu của bạn. Bạn có thể hỏi về "doanh thu hôm nay", "tồn kho hàng A", "báo cáo tháng này" hoặc "lợi nhuận quý này".</p>';
-                }
-
-                demoResponse.innerHTML = response;
             }
         });
-    </script>
+
+        // Xử lý lệnh giọng nói
+        function xuLyLenhGiongNoi(lenh) {
+            lenh = lenh.toLowerCase();
+
+            let response = '';
+
+            if (lenh.includes('doanh thu') && lenh.includes('hôm nay')) {
+                response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Doanh thu hôm nay (17/06/2025) là 4.850.000đ, tăng 12% so với cùng kỳ tuần trước.</p>';
+            } else if (lenh.includes('tồn kho') && lenh.includes('hàng a')) {
+                response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Hàng A hiện còn tồn kho 25 đơn vị, giá trị 12.500.000đ. Mức tồn kho an toàn là 20 đơn vị.</p>';
+            } else if (lenh.includes('báo cáo') && lenh.includes('tháng')) {
+                response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Báo cáo tháng 6/2025 (đến ngày 17/06):<br>- Doanh thu: 78.500.000đ<br>- Chi phí: 45.200.000đ<br>- Lợi nhuận: 33.300.000đ<br>- Tỷ suất lợi nhuận: 42.4%</p>';
+            } else if (lenh.includes('lợi nhuận') && lenh.includes('quý')) {
+                response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Lợi nhuận Quý 2/2025 (đến ngày 17/06) là 98.750.000đ, tăng 15% so với cùng kỳ năm trước.</p>';
+            } else {
+                response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Xin lỗi, tôi không hiểu yêu cầu của bạn. Bạn có thể hỏi về "doanh thu hôm nay", "tồn kho hàng A", "báo cáo tháng này" hoặc "lợi nhuận quý này".</p>';
+            }
+
+            demoResponse.innerHTML = response;
+        }
+    });
+</script>
+
 
 </body>
 </html>
