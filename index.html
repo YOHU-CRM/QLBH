@@ -1039,5 +1039,89 @@ console.log('Selected plan:', selectedPlan);
 </div>
 </div>
 </footer>
+<script id="voice-recognition-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const nutMic = document.getElementById('nut-mic');
+            const demoMicButton = document.getElementById('demo-mic-button');
+            const demoResponse = document.getElementById('demo-response');
+            const demoTextInput = document.getElementById('demo-text-input');
+            const demoSendButton = document.getElementById('demo-send-button');
+            
+            // Check if SpeechRecognition is supported
+            if ('webkitSpeechRecognition' in window) {
+                const nhanDang = new webkitSpeechRecognition();
+                nhanDang.lang = 'vi-VN';
+                nhanDang.continuous = false;
+                
+                nutMic.addEventListener('click', function() {
+                    nutMic.classList.add('animate-pulse');
+                    nhanDang.start();
+                });
+                
+                demoMicButton.addEventListener('click', function() {
+                    demoMicButton.classList.add('animate-pulse');
+                    nhanDang.start();
+                });
+                
+                nhanDang.onresult = function(sukien) {
+                    const lenh = sukien.results[0][0].transcript;
+                    xuLyLenhGiongNoi(lenh);
+                };
+                
+                nhanDang.onend = function() {
+                    nutMic.classList.remove('animate-pulse');
+                    demoMicButton.classList.remove('animate-pulse');
+                };
+            } else {
+                nutMic.addEventListener('click', function() {
+                    alert('Trình duyệt của bạn không hỗ trợ nhận dạng giọng nói. Vui lòng sử dụng Chrome hoặc Edge.');
+                });
+                
+                demoMicButton.addEventListener('click', function() {
+                    alert('Trình duyệt của bạn không hỗ trợ nhận dạng giọng nói. Vui lòng sử dụng Chrome hoặc Edge.');
+                });
+            }
+            
+            // Handle text input
+            demoSendButton.addEventListener('click', function() {
+                const lenh = demoTextInput.value.trim();
+                if (lenh) {
+                    xuLyLenhGiongNoi(lenh);
+                    demoTextInput.value = '';
+                }
+            });
+            
+            demoTextInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const lenh = demoTextInput.value.trim();
+                    if (lenh) {
+                        xuLyLenhGiongNoi(lenh);
+                        demoTextInput.value = '';
+                    }
+                }
+            });
+            
+            // Process voice commands
+            function xuLyLenhGiongNoi(lenh) {
+                lenh = lenh.toLowerCase();
+                
+                let response = '';
+                
+                if (lenh.includes('doanh thu') && lenh.includes('hôm nay')) {
+                    response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Doanh thu hôm nay (17/06/2025) là 4.850.000đ, tăng 12% so với cùng kỳ tuần trước.</p>';
+                } else if (lenh.includes('tồn kho') && lenh.includes('hàng a')) {
+                    response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Hàng A hiện còn tồn kho 25 đơn vị, giá trị 12.500.000đ. Mức tồn kho an toàn là 20 đơn vị.</p>';
+                } else if (lenh.includes('báo cáo') && lenh.includes('tháng')) {
+                    response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Báo cáo tháng 6/2025 (đến ngày 17/06):<br>- Doanh thu: 78.500.000đ<br>- Chi phí: 45.200.000đ<br>- Lợi nhuận: 33.300.000đ<br>- Tỷ suất lợi nhuận: 42.4%</p>';
+                } else if (lenh.includes('lợi nhuận') && lenh.includes('quý')) {
+                    response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Lợi nhuận Quý 2/2025 (đến ngày 17/06) là 98.750.000đ, tăng 15% so với cùng kỳ năm trước.</p>';
+                } else {
+                    response = '<p class="mb-2 font-medium">Trợ lý YOHU:</p><p>Xin lỗi, tôi không hiểu yêu cầu của bạn. Bạn có thể hỏi về "doanh thu hôm nay", "tồn kho hàng A", "báo cáo tháng này" hoặc "lợi nhuận quý này".</p>';
+                }
+                
+                demoResponse.innerHTML = response;
+            }
+        });
+    </script>
 </body>
 </html>
